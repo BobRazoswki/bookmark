@@ -68,24 +68,18 @@ feature 'Users sign out' do
 
 end
 
-feature "forget password" do
+feature 'forget password' do
 	
-scenario "the user has forgetten his password" do
-	visit('/users/reset_password')
-	save_and_open_page
-	expect(page).to have_content("enter your adress:")
-end
+	scenario "the user has forgetten his password" do
+		visit('/users/reset_password')
+		expect(page).to have_content("enter your adress:")
+	end
+
+	scenario "an email that is not in the db" do
+		enter_email('bob@bob.com')
+		expect(page).not_to have_content("email sent")
+		expect(page).to have_content("wrong email bob")
+	end
 
 end
-
-
-
-
-
-
-
-
-
-
-
 

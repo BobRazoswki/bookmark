@@ -16,5 +16,10 @@ module SessionHelpers
 		click_button 'Sign in'
 	end
 
+	def enter_email(email = 'test@test.com')
+		visit('/users/reset_password')
+		fill_in 'email', :with => email
+		click_button 'Submit'
+	end
 
 end
