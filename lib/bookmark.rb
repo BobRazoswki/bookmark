@@ -3,16 +3,25 @@ require 'sinatra'
 
 env = ENV["RACK_ENV"] || "development"
 
+
 DataMapper.setup(:default, "postgres://localhost/bookmark_manager_#{env}") #, "dbtype://user:password@hostname:port/databasename"
 
 require './lib/link' # this needs to be done after datamapper is initialised
 require './lib/tag'
+require './lib/user'
+require_relative '../helpers/application'
+
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
 class BookMark < Sinatra::Base
+
+	include ApplicationHelper
 	
 	set :views, Proc.new { File.join(root, "..", "views") }
+
+	enable :sessions
+	set :sessions_secret, 'bob super secret'
 
   get '/' do
   	@links = Link.all
@@ -35,6 +44,17 @@ class BookMark < Sinatra::Base
   	erb :index
   end
 
+  get '/users/new' do
+  	erb :"users/new"
+  end
+
+  post '/users' do
+  		user = User.create(:email => params[:email],
+  		:password => params[:password],
+  		:password_confirmation => params[:password_confirmation])
+  		session[:user_id] = user.id
+  		redirect to('/')
+  end
 
   # start the server if ruby file executed directly
   run! if app_file == $0

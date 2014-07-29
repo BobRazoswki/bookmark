@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 gem 'sinatra'
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
+gem 'bcrypt-ruby'
 
 group :production do
   gem 'newrelic_rpm'
