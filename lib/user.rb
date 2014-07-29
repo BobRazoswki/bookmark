@@ -16,5 +16,5 @@ class User
 	attr_accessor :password_confirmation
 
 	validates_confirmation_of :password
-	
+
 end
