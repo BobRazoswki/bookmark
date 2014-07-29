@@ -2,13 +2,23 @@
 <html>
 <head>
 	<title>Bookmark manager</title>
-  <link rel="stylesheet" type="text/css" href="/css/application.css">  
 </head>
 <body>
 
+<p> BOB </p>
 
   <% if current_user %>
-    Welcome, <%= current_user.email %>
+  <p>  Welcome, <%= current_user.email %> </p>
+    <form method="post" action="/sessions">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Sign out">
+    </form>
+  <% end %>
+
+  <% if flash[:notice] %>
+    <div id="notice">
+      <%= flash[:notice] %>
+    </div>
   <% end %>
 
 
@@ -22,5 +32,6 @@
   <% end %>
   
   <%= yield %>
+
 </body>
 </html>

@@ -10,6 +10,7 @@ require_relative 'controllers/application'
 require_relative 'controllers/sessions'
 
 class BookMark < Sinatra::Base
+	use Rack::MethodOverride
 	include ApplicationHelper
 	
 	set :views, Proc.new { File.join(root, "..", "views") }
