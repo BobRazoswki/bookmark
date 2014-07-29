@@ -4,6 +4,7 @@ gem 'data_mapper'
 gem 'dm-postgres-adapter'
 gem 'bcrypt-ruby'
 gem 'sinatra-flash'
+gem 'selenium-webdriver'
 
 group :production do
   gem 'newrelic_rpm'
