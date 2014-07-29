@@ -68,7 +68,15 @@ feature 'Users sign out' do
 
 end
 
+feature "forget password" do
+	
+scenario "the user has forgetten his password" do
+	visit('/users/reset_password')
+	save_and_open_page
+	expect(page).to have_content("enter your adress:")
+end
 
+end
 
 
 

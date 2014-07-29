@@ -5,6 +5,7 @@ gem 'dm-postgres-adapter'
 gem 'bcrypt-ruby'
 gem 'sinatra-flash'
 gem 'selenium-webdriver'
+gem 'sinatra-partial'
 
 group :production do
   gem 'newrelic_rpm'
