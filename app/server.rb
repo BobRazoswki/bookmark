@@ -7,6 +7,7 @@ require_relative 'controllers/users'
 require_relative 'controllers/links'
 require_relative 'controllers/tags'
 require_relative 'controllers/application'
+require_relative 'controllers/sessions'
 
 class BookMark < Sinatra::Base
 	include ApplicationHelper
