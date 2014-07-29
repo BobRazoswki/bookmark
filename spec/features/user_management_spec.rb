@@ -13,7 +13,13 @@ feature "Users sign up" do
 		expect{ sign_up("a@a.com", "pass", "wrong") }.to change(User, :count).by(0)
 		# lambda { sign_up('a@a.com', 'pass', 'wrong') }.should change(User, :count).by(0) 
 		expect(current_path).to eq('/users')   
-    expect(page).to have_content("Sorry, your passwords don't match") 
+    expect(page).to have_content("Sorry, there were the following problems with the form. Password does not match the confirmation Please sign up Email: Password: Password confirmation:") 
+	end
+
+	scenario "with and email that is already resgistered" do
+		expect{ sign_up }.to change(User, :count).by(1)
+		expect{ sign_up }.to change(User, :count).by(0)
+		expect(page).to have_content("This email is already taken")
 	end
 
 	def sign_up(email= "alice@example.com", password = "oranges!", password_confirmation = "oranges!")
