@@ -2,8 +2,7 @@ class BookMark < Sinatra::Base
 
 	post '/forgot_password' do
 	#get the email adress and check if we have it in the record
-	@user = User.first(:email => params[:email])
-
+		@user = User.first(:email => params[:email]) && User.generate_token(params[:email])
 		if @user
 			flash[:notice] = "email sent"
 			redirect to('/password_sent')
@@ -28,8 +27,10 @@ class BookMark < Sinatra::Base
 
 	get '/users/reset_password/:token' do
 
-		@user = User.first(:password_token => params["token"])
-		if @user
+		@user = User.first(:password_token => params["token"]) 
+
+		if @user && @user.password_token_timestamp > (Time.now - 3600)
+			@password_token = params[:token]
     	erb :'/users/new_password'
     else
     	erb :token_invalid
@@ -37,7 +38,23 @@ class BookMark < Sinatra::Base
 
   end
 
+
+
+
+  post '/users/forgot_password/:token' do
+       password, confirmation = params[:password], params[:confirmation]
+  	
+  	if password == confirmation
+  		erb :"users/password_changed"
+  	else
+  		('/')
+  	end
+
+  end
+
   post '/users/reset_password/:token' do
+  	
+  	erb :"users/new_password"
   	#then connect those info to the db
   	#generate a new digest
   	#migrate it into the db

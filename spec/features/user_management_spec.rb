@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../../app/helpers/session'
+require_relative '../helpers/session'
 
 include SessionHelpers
 
@@ -91,19 +91,46 @@ feature 'forget password' do
 									:password_token_timestamp => Time.now)
 		end
 
-		scenario "send wrong token" do
+		scenario "cannot reset with the wrong token" do
 			visit("/users/reset_password/bobo")
 			expect(page).not_to have_content("token access validated")
-			expect(page).to have_content('wrong token')
+			expect(page).to have_content('token invalid')
 		end
 
-		scenario "send the right token" do
+		scenario "reset with the right token" do
 			visit ("/users/reset_password/bob")
-			expect(page).not_to have_content('wrong token')
+			expect(page).not_to have_content('token invalid')
 			expect(page).to have_content("enter your new password:")
+		end
+
+		scenario "cannot reset if token is more than 1 hour old" do
+			user = User.create(
+									:email => "dave@dave.com",
+									:password_digest => "test",
+									:password_token => "dave",
+									:password_token_timestamp => (Time.now - 100000))
+
+			visit("/users/reset_password/dave")
+			expect(page).not_to have_content("token access validated")
+			expect(page).to have_content('token invalid')
 		end
 
 	end
 
-end
+	feature "rewrite password" do
 
+		scenario "compare password and confirmation" do
+			user = User.create(
+									:email => "test@test.com",
+									:password_digest => "test",
+									:password_token => "bob",
+									:password_token_timestamp => Time.now)
+			enter_new_password("bobby", "bobby")
+			expect(page).to have_content('password changed')
+		end
+
+			scenario "take the input of new password and link it to the db"
+
+
+end
+end

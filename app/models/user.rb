@@ -8,7 +8,7 @@ class User
 	property :password_digest, Text
 	#create a token, set a time duration
 	property :password_token, Text, :unique => true
-	property :password_token_timestamp, DateTime
+	property :password_token_timestamp, Time
 
 	def password=(password)
 		@password = password
@@ -17,7 +17,6 @@ class User
 
 	attr_reader :password
 	attr_accessor :password_confirmation
-	#attr_reader
 
 	validates_confirmation_of :password
 	validates_uniqueness_of :email
@@ -33,11 +32,8 @@ class User
 
 	end
 
-	def generate_token(email, password, password_token, password_token_timestamp)
-		user = User.first(:email => email,
-									:password => password,
-									:password_token => password_token,
-									:password_token_timestamp => password_token_timestamp)
+	def self.generate_token(email)
+		user = first(:email => email)
 		user.password_token = (1..64).map{('A'..'Z').to_a.sample}.join
 		user.password_token_timestamp = Time.now
 		user.save
