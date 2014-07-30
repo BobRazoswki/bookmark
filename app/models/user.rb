@@ -46,4 +46,13 @@ class User
 		end
 	end
 
+def send_simple_message
+  RestClient.post "https://api:key-a5e44eb333d6b56a0383f46d6e3ee5ec"\
+  "@api.mailgun.net/v2/samples.mailgun.org/messages",
+  :from => "Excited User <bobongithub@gmail.com>",
+  :to => "news@sweetbid.fr",
+  :subject => "Hello",
+  :text => "Testing some Mailgun awesomness!"
+end
+
 end

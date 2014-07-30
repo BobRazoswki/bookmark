@@ -6,6 +6,8 @@ gem 'bcrypt-ruby'
 gem 'sinatra-flash'
 gem 'selenium-webdriver'
 gem 'sinatra-partial'
+gem 'rest-client'
+gem 'multimap'
 
 group :production do
   gem 'newrelic_rpm'
