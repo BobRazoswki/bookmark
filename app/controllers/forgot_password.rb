@@ -5,8 +5,6 @@ class BookMark < Sinatra::Base
 		@user = User.first(:email => params[:email]) && User.generate_token(params[:email])
 		if @user
 			@user.send_simple_message
-			flash[:notice] = "email sent"
-			redirect to('/password_sent')
 		else
 			flash[:notice] = "wrong email bob"
 			redirect to('/users/reset_password')
