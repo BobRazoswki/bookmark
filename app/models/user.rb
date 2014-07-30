@@ -50,7 +50,7 @@ def send_simple_message
   RestClient.post "https://api:key-a5e44eb333d6b56a0383f46d6e3ee5ec"\
   "@api.mailgun.net/v2/samples.mailgun.org/messages",
   :from => "postmaster@sandbox08b134a3e23b413ba3066934890a03fd.mailgun.org",
-  :to => "news@sweetbid.fr", "bobongithub@gmail.com",
+  :to => "bobongithub@gmail.com",
   :subject => "Hello",
   :text => "Testing some Mailgun awesomness! "
 end
