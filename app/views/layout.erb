@@ -6,7 +6,7 @@
 <body>
 
 <a href="/users/reset_password">Forgot password</a>
-
+<a href="/sessions/new"> sign in</a>
   <% if current_user %>
   <p>  Welcome, <%= current_user.email %> </p>
     <form method="post" action="/sessions">

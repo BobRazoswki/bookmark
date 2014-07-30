@@ -156,7 +156,9 @@ feature 'forget password' do
 				sign_in('test@test.com', 'bobby')
 				expect(page).to have_content("Welcome, test@test.com")
 			end
+end
 
-
+feature "send token" do
+	
 end
 end
