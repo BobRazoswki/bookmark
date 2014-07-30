@@ -39,4 +39,11 @@ class User
 		user.save
 	end
 
+	def self.change_password(email,new_password)
+		user = first(:email => email)
+		if user
+			user.update!(password: new_password, password_digest: BCrypt::Password.create(new_password) )
+		end
+	end
+
 end

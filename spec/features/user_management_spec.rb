@@ -129,7 +129,33 @@ feature 'forget password' do
 			expect(page).to have_content('password changed')
 		end
 
-			scenario "take the input of new password and link it to the db"
+			scenario "take the input of new password and link it to the db" do
+				user = User.create(
+									:email => "test@test.com",
+									:password_digest => "test",
+									:password_token => "bob",
+									:password_token_timestamp => Time.now)
+				password_orignal = user.password_digest
+				enter_new_password("bobby", "bobby") 
+				user = User.get(user.id)
+				expect(user.password_digest).not_to eq(password_orignal)
+			end
+
+			scenario "check if he can log in with the new password" do
+				user = User.create(
+									:email => "test@test.com",
+									:password_digest => "test",
+									:password_token => "bob",
+									:password_token_timestamp => Time.now)
+				password_orignal = user.password_digest
+				enter_new_password("bobby", "bobby") 
+				user = User.get(user.id)
+				expect(user.password_digest).not_to eq(password_orignal)
+				visit('/')
+				expect(page).not_to have_content("Welcome, test@test.com")
+				sign_in('test@test.com', 'bobby')
+				expect(page).to have_content("Welcome, test@test.com")
+			end
 
 
 end

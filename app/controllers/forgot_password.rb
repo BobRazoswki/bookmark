@@ -14,7 +14,7 @@ class BookMark < Sinatra::Base
 	end
 
 	get '/forgot_password' do
-	"bo"
+	"bob"
 	end
 
 	get '/password_sent' do
@@ -38,13 +38,12 @@ class BookMark < Sinatra::Base
 
   end
 
-
-
-
   post '/users/forgot_password/:token' do
+  	user = User.first(:password_token => params[:token])
        password, confirmation = params[:password], params[:confirmation]
   	
   	if password == confirmation
+  		User.change_password(user.email, password)
   		erb :"users/password_changed"
   	else
   		('/')
@@ -53,29 +52,7 @@ class BookMark < Sinatra::Base
   end
 
   post '/users/reset_password/:token' do
-  	
   	erb :"users/new_password"
-  	#then connect those info to the db
-  	#generate a new digest
-  	#migrate it into the db
-
-  	#password, confirmation = params[:password], params[:confirmation]
-  	#user = User.authenticate(password, confirmation)
-#need to check if the token is the right one
-
-=begin
-	user = User.authenticate(password_token, password_token_timestamp)
-
-  	if user
-				session[:user_id] = user.id
-				redirect to('/users/reset_password/:token')
-		else
-				flash[:errors] = ["The token is incorrect"]
-				erb :"sessions/new"
-		end
-=end
-
-  	
   end
 
 end
