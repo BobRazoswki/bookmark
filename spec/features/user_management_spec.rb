@@ -81,5 +81,29 @@ feature 'forget password' do
 		expect(page).to have_content("wrong email bob")
 	end
 
+	feature " manage the token" do
+
+		before(:each) do	
+			user = User.create(
+									:email => "test@test.com",
+									:password_digest => "test",
+									:password_token => "bob",
+									:password_token_timestamp => Time.now)
+		end
+
+		scenario "send wrong token" do
+			visit("/users/reset_password/bobo")
+			expect(page).not_to have_content("token access validated")
+			expect(page).to have_content('wrong token')
+		end
+
+		scenario "send the right token" do
+			visit ("/users/reset_password/bob")
+			expect(page).not_to have_content('wrong token')
+			expect(page).to have_content("enter your new password:")
+		end
+
+	end
+
 end
 

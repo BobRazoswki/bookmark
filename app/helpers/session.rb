@@ -22,4 +22,12 @@ module SessionHelpers
 		click_button 'Submit'
 	end
 
+	def enter_token(token ="bob")
+		visit("/users/reset_password/#{token}")
+		save_and_open_page
+		fill_in('password', with: '12345678')
+		fill_in('confirmation', with: '12345678')
+		click_button 'Bob submit'
+	end
+
 end

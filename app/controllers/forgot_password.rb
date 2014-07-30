@@ -26,4 +26,39 @@ class BookMark < Sinatra::Base
 		erb :"users/reset_password"
 	end
 
+	get '/users/reset_password/:token' do
+
+		@user = User.first(:password_token => params["token"])
+		if @user
+    	erb :'/users/new_password'
+    else
+    	erb :token_invalid
+    end
+
+  end
+
+  post '/users/reset_password/:token' do
+  	#then connect those info to the db
+  	#generate a new digest
+  	#migrate it into the db
+
+  	#password, confirmation = params[:password], params[:confirmation]
+  	#user = User.authenticate(password, confirmation)
+#need to check if the token is the right one
+
+=begin
+	user = User.authenticate(password_token, password_token_timestamp)
+
+  	if user
+				session[:user_id] = user.id
+				redirect to('/users/reset_password/:token')
+		else
+				flash[:errors] = ["The token is incorrect"]
+				erb :"sessions/new"
+		end
+=end
+
+  	
+  end
+
 end
