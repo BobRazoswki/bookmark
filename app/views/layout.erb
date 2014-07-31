@@ -2,16 +2,37 @@
 <html>
 <head>
 	<title>Bookmark manager</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
+<body id="dot-matrix">
 
-<a href="/users/reset_password">Forgot password</a>
-<a href="/sessions/new"> sign in</a>
+
+<header>
+
+  <nav>
+    <div class="logo">
+    </div>
+    <ul>
+      <li>
+        <a href="/sessions/new"> sign in</a>
+      </li>
+      <li>
+        <a href="/users/new"> sign up</a>
+      </li>
+      <li>
+        <a href="/users/reset_password">Forgot password</a>
+      </li>
+    </ul>
+
+  </nav>
+
+</header>
+
   <% if current_user %>
   <p>  Welcome, <%= current_user.email %> </p>
     <form method="post" action="/sessions">
       <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="Sign out">
+      <button type="submit" value="Sign out"> Bob it </button>
     </form>
   <% end %>
 
@@ -23,12 +44,12 @@
 
 
   <% if flash[:errors] && !flash[:errors].empty? %>
-  <% flash[:errors].each  do|error| %>
-  	Sorry, there were the following problems with the form.
-    <ul id="errors">
-    	<li> <%= error %> </li>
-    </ul>
-  <% end %>
+    <% flash[:errors].each  do|error| %>
+    	Sorry, there were the following problems with the form.
+      <ul id="errors">
+      	<li> <%= error %> </li>
+      </ul>
+    <% end %>
   <% end %>
   
   <%= yield %>
