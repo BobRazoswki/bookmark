@@ -2,9 +2,16 @@ class BookMark < Sinatra::Base
 
 	post '/forgot_password' do
 	#get the email adress and check if we have it in the record
-		user = User.first(:email => params[:email]) && User.generate_token(params[:email])
+		
+		user = User.first(:email => params[:email]) 
+
 		if user
-			user.send_simple_message
+			user.password_token = (1..64).map{('A'..'Z').to_a.sample}.join
+			user.password_token_timestamp = Time.now
+			user.save
+			user.send_simple_message(params[:email], user.password_token)
+			#flash[:notice] = "email sent"
+			#redirect to('/password_sent')
 		else
 			flash[:notice] = "wrong email bob"
 			redirect to('/users/reset_password')
