@@ -31,13 +31,26 @@ body {
  font-family: most_waztedregular;
 }
 
-header {
-
+a {
+text-decoration: none;
 }
+
+a:hover {
+font-size: 1.6em;
+}
+
+a:visited {
+color: black;
+}
+
 .logo {
-	background: url('/images/booktag-200.png') no-repeat;
-	height: 36px;
-	width: 156px;
+background: url('/images/bookmark-logo.png') no-repeat;
+height: 36px;
+width: 209px;
+margin-bottom: -12px;
+padding-top: 5px;
+margin-left: 21px;
+margin-top: 12px;
 }
 
 nav li {
@@ -52,17 +65,16 @@ font-size: 1.4em;
 }
 
 nav {
-	background: white;
+	background: rgba(255,255,255,0.6);
 	position: fixed;
 	width: 100%;
 	top: 0px;
 	margin-left: -8px;
 }
 
-form {
-	font-family: ;
+.container a {
+color: white;
 }
-
 
 form input {
 	height: 20px;
@@ -72,4 +84,9 @@ form input {
 form button {
 height: 26px;
 width: 80px;
+}
+
+.container {
+	color: white;
+	font-size: 1.4em;
 }
