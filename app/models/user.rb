@@ -57,9 +57,8 @@ def send_simple_message(email, password_token)
   :from => "Mailgun Sandbox <postmaster@sandbox27040c50b6e045f7a7ac475b51b9ac43.mailgun.org>",
   :to => email,
   :subject => "Hello",
-  :text => "Testing some Mailgun awesomness! /users/reset_password/#{password_token} "
+  :text => "click and reset your password, AND DON'T FORTGET IT AGAIN http://intense-everglades-2463.herokuapp.com/users/reset_password/#{password_token} "
 end
-
 
 
 end
