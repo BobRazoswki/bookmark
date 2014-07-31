@@ -35,7 +35,7 @@ header {
 
 }
 .logo {
-	background: url('/images/logo-bookmark.png') no-repeat;
+	background: url('/images/booktag-200.png') no-repeat;
 	height: 36px;
 	width: 156px;
 }
@@ -48,6 +48,7 @@ padding-left: 10px;
 margin-top: -18px;
 margin-right: 12px;
 vertical-align: middle;
+font-size: 1.4em;
 }
 
 nav {
