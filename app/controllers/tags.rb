@@ -6,4 +6,8 @@ class BookMark < Sinatra::Base
 		erb :index
 	end
 	
+	post '/tags/:text' do
+		
+	end
+
 end

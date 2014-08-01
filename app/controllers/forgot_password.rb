@@ -16,16 +16,6 @@ class BookMark < Sinatra::Base
 		end
 	end
 
-=begin
-	get '/forgot_password' do
-		"bob"
-	end
-
-	get '/password_sent' do
-		"need to figure out how to send a fucking token now"
-	end
-=end
-
 	get '/users/reset_password' do
 		erb :"users/reset_password"
 	end

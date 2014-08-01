@@ -1,7 +1,7 @@
 <ul>
 	<% @links.each do |link| %>
-		<li> <a href="<%= link.url %>"> <%= link.title %> </a> </li>
-		<% end %>
+		<li> <a href="http://www.<%= link.url %>"> <%= link.title %> </a> </li>
+	<% end %>
 </ul>
 
 <div id="new-link">
@@ -9,6 +9,6 @@
 		Url: <input type="text" name="url">
 		Title: <input type="text" name="title">
 		Tags: <input type="text" name="tags">
-		<button type="submit" value="Add link">Bob it </button>
+		<button type="submit" value="Add link"> Bob </button>
 	</form>
 </div>
