@@ -1,0 +1,17 @@
+	<ul>
+		<% @peeps.each do |peep| %>
+			<li class="peep">
+				<div class="peep_container">
+					<div class="message">
+						<strong>@<%= peep.user.user_handle %></strong> 
+					</br>
+						<%= peep.message %>
+					</div>
+						<span class='source'>
+	   			  <strong>Added by</strong> <%= peep.user.name %>
+						<strong>at</strong> <%= peep.timestamp %>
+	  				</span>
+				</div>
+			</li>
+			<% end %>
+	</ul>

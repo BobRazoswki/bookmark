@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Bookmark manager</title>
+	<title>Chitter</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body id="dot-matrix">
@@ -9,48 +9,16 @@
 
 <header>
 
-  <nav>
-    <div class="logo">
-    </div>
-    <ul>
-      <li>
-        <a href="/sessions/new"> sign in</a>
-      </li>
-      <li>
-        <a href="/users/new"> sign up</a>
-      </li>
-      <li>
-        <a href="/users/reset_password">Forgot password</a>
-      </li>
-    </ul>
-
-  </nav>
+  <%= partial :signed_in %>
+  <%= partial :not_signed_in %>
 
 </header>
+
 <div class="container">
-  <% if current_user %>
-  <p>  Welcome, <%= current_user.email %> </p>
-    <form method="post" action="/sessions">
-      <input type="hidden" name="_method" value="delete">
-      <button type="submit" value="Sign out"> Bob </button>
-    </form>
-  <% end %>
 
-  <% if flash[:notice] %>
-    <div id="notice">
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
+<%= partial :flash_notice %>
 
-
-  <% if flash[:errors] && !flash[:errors].empty? %>
-    <% flash[:errors].each  do|error| %>
-    	Sorry, there were the following problems with the form.
-      <ul id="errors">
-      	<li> <%= error %> </li>
-      </ul>
-    <% end %>
-  <% end %>
+<%= partial :flash_error %>
   
   <%= yield %>
 </div>

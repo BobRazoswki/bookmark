@@ -1,0 +1,17 @@
+  <% if !current_user %>
+  <nav>
+    <div class="logo">
+    </div>
+    <ul>
+      <li>
+        <a href="/sessions/new">Sign in</a>
+      </li>
+      <li>
+        <a href="/users/new">Sign up</a>
+      </li>
+      <li>
+        <a href="/users/reset_password">Forgot password</a>
+      </li>
+    </ul>
+  </nav>
+  <% end %>

@@ -1,14 +1,4 @@
-<ul>
-	<% @links.each do |link| %>
-		<li> <a href="http://www.<%= link.url %>"> <%= link.title %> </a> </li>
-	<% end %>
-</ul>
-
-<div id="new-link">
-	<form action="/links" method="post">
-		Url: <input type="text" name="url">
-		Title: <input type="text" name="title">
-		Tags: <input type="text" name="tags">
-		<button type="submit" value="Add link"> Bob </button>
-	</form>
+<div class="container">
+	<%= partial :peep_display %>
+	<%= partial :"peeps/new" %>
 </div>

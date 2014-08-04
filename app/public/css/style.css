@@ -1,79 +1,60 @@
-
-@font-face {
-    font-family: 'most_waztedregular';
-    src: url('/fonts/mostwasted-webfont.eot');
-    src: url('/fonts/mostwasted-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/mostwasted-webfont.woff') format('woff'),
-         url('/fonts/mostwasted-webfont.ttf') format('truetype'),
-         url('/fonts/mostwasted-webfont.svg#most_waztedregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
 html {
-	background: url('/images/bg-bookmark.jpg') no-repeat center center fixed;
+	background: url('/images/03.jpg') no-repeat center center fixed;
 	background-size: 100%;
 }
 
-#dot-matrix {
-background: url(http://s14.directupload.net/images/111129/44ga9qid.png);
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 2;
-}
-
 body {
- height: 3000px;
- margin-top: 68px;
- font-family: most_waztedregular;
+	height: 3000px;
+	margin-top: 134px;
+	font-family: helvetica;
 }
 
 a {
-text-decoration: none;
+	text-decoration: none;
 }
 
 a:hover {
-font-size: 1.6em;
+	font-weight:bold;
 }
 
 a:visited {
-color: black;
+	color: black;
 }
 
 .logo {
-background: url('/images/bookmark-logo.png') no-repeat;
-height: 36px;
-width: 209px;
-margin-bottom: -12px;
-padding-top: 5px;
-margin-left: 21px;
-margin-top: 12px;
+	background: url('/images/Twitter_logo_blue.png') no-repeat center;
+	height: 50px;
 }
 
 nav li {
-display: inline-block;
-list-style-type: none;
-float: right;
-padding-left: 10px;
-margin-top: -18px;
-margin-right: 12px;
-vertical-align: middle;
-font-size: 1.4em;
+	display: inline-block;
+	list-style-type: none;
+	float: right;
+	padding-left: 10px;
+	margin-top: -18px;
+	margin-right: 12px;
+	vertical-align: middle;
+	font-size: 1em;
+}
+
+nav ul {
+	display: inline-flex;
+	width: 306px;
+	margin-left: 621px;
+	padding-top: 16px;
 }
 
 nav {
-	background: rgba(255,255,255,0.6);
+	background: rgba(255,255,255,0.8);
 	position: fixed;
 	width: 100%;
-	top: 0px;
+	top: -10px;
 	margin-left: -8px;
+	margin-top: 10px;
 }
 
 .container a {
-color: white;
+	color: black;
 }
 
 form input {
@@ -82,11 +63,88 @@ form input {
 }
 
 form button {
-height: 26px;
-width: 80px;
+	height: 26px;
+	width: 80px;
 }
 
 .container {
-	color: white;
-	font-size: 1.4em;
+	color: black;
+	font-size: 18px;
 }
+
+.peep_container {
+	border: 1px solid black;
+	background: rgba(255, 255, 255, 0.8);
+	margin-bottom: 6px;
+	width: 660px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.container ul {
+	list-style-type: none;
+}
+
+div#new-peep {
+	width: 260px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+input.peep_it {
+	width: 300px;
+	height: 50px;
+}
+
+nav ul {
+	display: inline-flex;
+	width: 306px;
+	margin-left: 621px;
+	margin-top: -134px;
+	height: 38px;
+}
+
+input[placeholder], [placeholder], *[placeholder] {
+   color: #1BB2EB;
+   text-align: center;
+   font-size: 16px;
+   font-weight: 800;
+}
+
+.peep_button {
+width: 300px;
+height: 50px;
+margin-top: 6px;
+background: rgba(255, 255, 255, 0.8);
+}
+
+input.sign_out {
+	background: blue;
+}
+
+span.welcome {
+	color: #1BB2EB;
+	width: 600px;
+	float: left;
+	margin-left: -175px;
+	margin-top: 18px;
+}
+
+.sign_out {
+	height: 26px;
+	width: 80px;
+	border: none;
+	background: none;
+	margin-top: 12px;
+	color: #1BB2EB;
+	margin-right: -50px;
+	font-size: 14px;
+}
+
+.sign_out:hover {
+	font-weight: bold;
+}
+
+
+
+

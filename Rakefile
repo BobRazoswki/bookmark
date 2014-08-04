@@ -1,4 +1,3 @@
-
 require 'data_mapper'
 require './app/data_mapper_setup'
 

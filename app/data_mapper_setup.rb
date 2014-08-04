@@ -1,8 +1,8 @@
 env = ENV["RACK_ENV"] || "development"
-
-require_relative 'models/link' # this needs to be done after datamapper is initialised
-require_relative 'models/tag'
+#DataMapper::Logger.new(STDOUT, :debug)
+require_relative 'models/peep' # this needs to be done after datamapper is initialised
 require_relative 'models/user'
 
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/bookmark_manager_#{env}")
+DataMapper.setup(:default, "postgres://localhost/chitter_#{env}")
 DataMapper.finalize
+ 

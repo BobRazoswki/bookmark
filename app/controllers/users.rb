@@ -1,4 +1,4 @@
-class BookMark < Sinatra::Base
+class Chitter < Sinatra::Base
 
 	get '/users/new' do
 		@user = User.new
@@ -6,7 +6,9 @@ class BookMark < Sinatra::Base
 	end
 
 	post '/users' do
-		@user = User.create(:email => params[:email],
+		@user = User.create(:user_handle => params[:user_handle],
+			:name => params[:name],
+			:email => params[:email],
 		:password => params[:password],
 		:password_confirmation => params[:password_confirmation])
 			if @user.save 

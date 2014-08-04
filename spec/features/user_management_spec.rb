@@ -30,7 +30,9 @@ end
 feature "User signs in" do
 	
 	before(:each) do
-		User.create(:email => "test@test.com",
+		User.create(:user_handle => "handle",
+								:name => "name",
+								:email => "test@test.com",
 								:password => "test",
 								:password_confirmation => "test")
 	end
@@ -54,7 +56,8 @@ end
 feature 'Users sign out' do
 	
 	before(:each) do
-		User.create(:email => 'test@test.com',
+		User.create(:user_handle => "handle",
+			:email => 'test@test.com',
 			:password => 'test',
 			:password_confirmation => 'test')
 	end
@@ -158,7 +161,4 @@ feature 'forget password' do
 			end
 end
 
-feature "send token" do
-	
-end
 end

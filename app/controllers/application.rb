@@ -1,7 +1,7 @@
-class BookMark < Sinatra::Base
+class Chitter < Sinatra::Base
 
 	get '/' do
-		@links = Link.all
+		@peeps = Peep.all(:order => [ :timestamp.desc ])
 	  erb :index
 	end
 
