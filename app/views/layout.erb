@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Chitter</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
-<body id="dot-matrix">
 
+<body>
 
 <header>
-
-  <%= partial :signed_in %>
-  <%= partial :not_signed_in %>
-
+ <%= partial :signed_in %>
+ <%= partial :not_signed_in %>
 </header>
 
-<div class="container">
+<section class="container">
+	<%= partial :flash_notice %>
+	<%= partial :flash_error %>
+	<%= yield %>
+</section>
 
-<%= partial :flash_notice %>
+<footer>
+	<%= partial :footer %> 
+</footer>
 
-<%= partial :flash_error %>
-  
-  <%= yield %>
-</div>
 </body>
 </html>

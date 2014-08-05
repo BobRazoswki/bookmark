@@ -5,9 +5,8 @@ class Reply
 	belongs_to :peep
 	belongs_to :user
 
-
 	property :id,		Serial
-	property :reply, 	Text, :required => true, :message => 'Your reply is empty'
+	property :message, 	Text, :required => true, :message => 'Your reply is empty'
 	property :timestamp, Time
 	
 end

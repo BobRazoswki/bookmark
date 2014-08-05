@@ -6,11 +6,13 @@ class Chitter < Sinatra::Base
 	end
 
 	post '/users' do
-		@user = User.create(:user_handle => params[:user_handle],
+		@user = User.create(
+			:user_handle => params[:user_handle],
 			:name => params[:name],
 			:email => params[:email],
-		:password => params[:password],
-		:password_confirmation => params[:password_confirmation])
+			:password => params[:password],
+			:password_confirmation => params[:password_confirmation])
+
 			if @user.save 
 				session[:user_id] = @user.id
 				redirect to('/')

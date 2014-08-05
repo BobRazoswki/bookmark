@@ -5,10 +5,11 @@ include SessionHelpers
 
 feature "Users sign up" do
 
+
 	scenario "when being logged out" do
 		expect{ sign_up }.to change(User, :count).by(1)
-		# save_and_open_page
-		expect(page).to have_content ("Welcome, alice@example.com")
+		#save_and_open_page
+		expect(page).to have_content ("Welcome, alice@example.com, @@alice Sign out Reply! Peep!")
 		expect(User.first.email).to eq("alice@example.com")
 	end
 
@@ -16,7 +17,7 @@ feature "Users sign up" do
 		expect{ sign_up("a@a.com", "pass", "wrong") }.to change(User, :count).by(0)
 		# lambda { sign_up('a@a.com', 'pass', 'wrong') }.should change(User, :count).by(0) 
 		expect(current_path).to eq('/users')   
-    expect(page).to have_content("Sorry, there were the following problems with the form. Password does not match the confirmation Please sign up Email: Password: Password confirmation:") 
+    expect(page).to have_content("Sign in Sign up Forgot password Sorry, there were the following problems with the form. This email is already taken or the format is not valid Please sign up User handle: Name: Email: Password: Password confirmation: Sign up") 
 	end
 
 	scenario "with and email that is already resgistered" do
@@ -81,7 +82,7 @@ feature 'forget password' do
 	scenario "an email that is not in the db" do
 		enter_email('bob@bob.com')
 		expect(page).not_to have_content("email sent")
-		expect(page).to have_content("wrong email bob")
+		expect(page).to have_content("Sign in Sign up Forgot password wrong email enter your adress: Email: Submit")
 	end
 
 	feature " manage the token" do

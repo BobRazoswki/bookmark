@@ -1,17 +1,47 @@
-	<ul>
+<!-- Display peeps -->
+<ul>
 		<% @peeps.each do |peep| %>
 			<li class="peep">
 				<div class="peep_container">
 					<div class="message">
 						<strong>@<%= peep.user.user_handle %></strong> 
-					</br>
+						</br>
 						<%= peep.message %>
 					</div>
 						<span class='source'>
-	   			  <strong>Added by</strong> <%= peep.user.name %>
-						<strong>at</strong> <%= peep.timestamp %>
+	   			  	<strong>Added by</strong> <%= peep.user.name %>
+							<strong>at</strong> <%= peep.timestamp %>
 	  				</span>
-				</div>
-			</li>
+
+					<!-- New reply -->
+					<% if current_user %> 
+						<div id="new-reply">
+							<form  action="/replies/<%= peep.id %>/<%= current_user.id %>" method="post">
+								<input class="reply" type="text" name="message" placeholder="Reply now !">
+								<button class="reply_button" type="submit" value="reply">Reply!</button>
+							</form>
+						</div>
+					<% end %>
+			<% partial :"replies/display" %>
+				<!-- Display replies -->
+					<% @replies.each do |reply| %>
+						<% if peep.replies != nil %>
+							<p class="reply">
+								<div class="reply_container">
+									<div class="message">
+										<strong>@<%= peep.replies %></strong> 
+											</br>
+										<%= reply.message %>
+									</div>
+										<span class='source'>
+						  				<strong>Added by</strong> <%= reply.user.name %>
+											<strong>at</strong> <%= reply.timestamp %>
+										</span>
+									</div>
+							</p>
+					</div>
+					<% end %>
 			<% end %>
-	</ul>
+			</li>
+		<% end %>
+</ul>

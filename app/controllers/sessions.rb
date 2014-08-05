@@ -4,7 +4,6 @@ class Chitter < Sinatra::Base
 		erb :"sessions/new"
 	end
 
-
 	post '/sessions' do
 		email, password = params[:email], params[:password]
 		user = User.authenticate(email, password)
@@ -16,7 +15,6 @@ class Chitter < Sinatra::Base
 				erb :"sessions/new"
 		end
 	end
-
 
 	delete '/sessions' do
 		flash[:notice] = "Good bye!"
