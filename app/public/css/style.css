@@ -22,7 +22,6 @@ a:visited {
 }
 
 .logo {
-	background: url('/images/Twitter_logo_blue.png') no-repeat center;
 	height: 50px;
 }
 
@@ -72,13 +71,17 @@ form button {
 	font-size: 18px;
 }
 
-.peep_container {
+.peep {
 	border: 1px solid black;
 	background: rgba(255, 255, 255, 0.8);
 	margin-bottom: 6px;
 	width: 660px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.reply_container {
+	padding-left: 20px;
 }
 
 .container ul {

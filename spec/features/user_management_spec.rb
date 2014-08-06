@@ -9,7 +9,7 @@ feature "Users sign up" do
 	scenario "when being logged out" do
 		expect{ sign_up }.to change(User, :count).by(1)
 		#save_and_open_page
-		expect(page).to have_content ("Welcome, alice@example.com, @@alice Sign out Reply! Peep!")
+		expect(page).to have_content ("Welcome, alice@example.com, @@alice Sign out Peep! My super footer")
 		expect(User.first.email).to eq("alice@example.com")
 	end
 
