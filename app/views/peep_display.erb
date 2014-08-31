@@ -3,6 +3,7 @@
 		<% @peeps.each do |peep| %>
 			<li class="peep">
 				<article class="peep_container">
+					<h3> Peeps </h3>
 					<section class="message">
 						<strong>@<%= peep.user.user_handle %></strong> 
 						</br>
@@ -10,25 +11,24 @@
 					</section>
 						<span class='source'>
 	   			  	<strong>Added by</strong> <%= peep.user.name %>
-							<strong>at</strong> <%= peep.timestamp %>
+							<strong>Peeped the </strong> <%= peep.timestamp.strftime("%m/%d/%Y")%>
+							<strong>at </strong><%= peep.timestamp.strftime("%I:%M%p")  %>
 	  				</span>
 	
 				<!-- Display replies -->
+					<button class='show_replies'>Show replies</button>
 						<% if peep.replies != nil %>
 							<% peep.replies.each do |reply| %> 
-							<p class="reply">
 								<article class="reply_container">
 									<section class="message">
-										<strong>@<%= reply.user.user_handle %></strong> 
-											</br>
-										<%= reply.message %>
-									</section>
-									<span class='source'>
-					  				<strong>Added by</strong> <%= reply.user.name %>
-										<strong>at</strong> <%= reply.timestamp %>
+										<h4> <strong>@<%= reply.user.user_handle %></strong>  replied : </h4><%= reply.message %>
+										<br>
+											<span class='source'>
+										<strong>Peeped the </strong> <%= reply.timestamp.strftime("%m/%d/%Y")%>
+										<strong>at </strong><%= reply.timestamp.strftime("%I:%M%p")  %>
 									</span>
+									</section>
 								</article>
-							</p>
 					</article>
 					<% end %>
 			<% end %>
